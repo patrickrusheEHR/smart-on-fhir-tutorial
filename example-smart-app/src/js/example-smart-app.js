@@ -14,11 +14,11 @@
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
-                      /*code: {
+                      code: {
                         $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
-                    }*/
+                      }
                     }
                   });
 
@@ -31,7 +31,6 @@
           var fname = '';
           var lname = '';
 
-          var patientJSON = JSON.stringify(patient, null, -2);
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
@@ -50,7 +49,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.otherinfo = patientJSON;
+          
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
