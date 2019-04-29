@@ -32,6 +32,8 @@
           var fname = '';
           var lname = '';
 
+          var patientJSON = JSON.stringify(patient, null, -2);
+
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
@@ -49,6 +51,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
+          p.otherinfo = patientJSON;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -84,6 +87,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      otherinfo: {value: ''}
     };
   }
 
@@ -127,6 +131,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#otherinfo').html(p.otherinfo);
   };
 
 })(window);
